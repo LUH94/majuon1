@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>충남교육청 미래교육 통합플랫폼 마주온</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        body { font-family: 'Pretendard', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col">
+
+    <!-- 상단 공식 헤더 -->
+    <header class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between py-3">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center space-x-1 cursor-pointer" onclick="location.reload()">
+                    <span class="text-blue-600 font-black text-2xl tracking-tighter">마주</span>
+                    <span class="w-3 h-3 bg-red-500 rounded-full inline-block"></span>
+                    <span class="text-blue-600 font-black text-2xl tracking-tighter">온</span>
+                </div>
+                <span class="hidden md:inline-block text-slate-300">|</span>
+                <div class="hidden md:flex flex-col">
+                    <span class="font-bold text-slate-800 text-sm tracking-tight">충청남도교육청 미래교육 통합플랫폼</span>
+                    <span class="text-[11px] text-blue-600 font-medium">ai.cne.go.kr</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-4 text-sm text-slate-600">
+                <div class="flex items-center space-x-2 bg-blue-50 px-3 py-1.5 rounded-full text-blue-700 font-medium text-xs">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>서산교육지원청 교직원 (이의호)</span>
+                </div>
+                <button onclick="showAlert('통합인증(SSO) 시스템에서 로그아웃 되었습니다.')" class="flex items-center space-x-1 bg-white border border-slate-300 hover:bg-slate-50 px-3 py-1.5 rounded-full font-medium text-slate-700 transition text-xs shadow-sm">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>로그아웃</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 플랫폼 공식 안내 배너 (ai.cne.go.kr/intro 스타일) -->
+    <div class="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white py-4 px-4 shadow-md">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-lightbulb text-yellow-300"></i>
+                </div>
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <h1 class="font-bold text-base">마주온이란?</h1>
+                        <span class="text-xs bg-blue-500/50 px-2 py-0.5 rounded text-blue-100">충남형 미래교육 통합플랫폼</span>
+                    </div>
+                    <p class="text-xs text-blue-200 mt-0.5">학생·학부모·교직원이 온라인(ON)으로 교육에 관한 모든 소통을 나누는 공간입니다. (마주치다 + 마주보다 + 마주하다)</p>
+                </div>
+            </div>
+            <button onclick="showAlert('마주온 상세 소개 및 도움말 페이지로 이동합니다.')" class="bg-white/10 hover:bg-white/20 text-white text-xs font-semibold px-4 py-2 rounded-xl transition border border-white/15 whitespace-nowrap">
+                자세히 보기 <i class="fa-solid fa-arrow-right ml-1"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 오늘의 일정 공지 바 -->
+    <div class="bg-white border-b border-slate-200 py-2.5 px-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between text-xs text-slate-600">
+            <div class="flex items-center space-x-3">
+                <span class="font-bold text-slate-800 bg-slate-100 px-2 py-1 rounded">2026년 9월 4일(금)</span>
+                <div class="flex items-center space-x-2 text-slate-700">
+                    <i class="fa-regular fa-calendar-days text-blue-600"></i>
+                    <span>[공지] 2학기 충남형 AI 디지털교과서 활용 교원 연수 안내 (참여 신청 진행 중)</span>
+                </div>
+            </div>
+            <button class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+
+    <!-- 상단 빠른 바로가기 아이콘 모음 -->
+    <div class="bg-white py-4 border-b border-slate-200 overflow-x-auto shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 flex space-x-6 sm:space-x-8 justify-start lg:justify-between min-w-max">
+            <!-- 아이콘 항목들 -->
+            <div class="flex flex-col items-center cursor-pointer group" onclick="showAlert('마주온이란 소개 페이지로 이동합니다.')">
+                <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl group-hover:bg-blue-600 group-hover:text-white transition shadow-sm">
+                    <i class="fa-solid fa-cube"></i>
+                </div>
+                <span class="text-xs text-slate-700 mt-2 font-medium">마주온이란</span>
+            </div>
+            <div class="flex flex-col items-center cursor-pointer group" onclick="showAlert('한글다움 서비스로 이동합니다.')">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl group-hover:bg-indigo-600 group-hover:text-white transition shadow-sm">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+                <span class="text-xs text-slate-700 mt-2 font-medium">한글다움</span>
+            </div>
+            <div class="flex flex-col items-center cursor-pointer group" onclick="showAlert('초등교무학사실무 서비스로 이동합니다.')">
+                <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl group-hover:bg-amber-600 group-hover:text-white transition shadow-sm">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                </div>
+                <span class="text-xs text-slate-700 mt-2 font-medium">초등교무학사실무</span>
+            </div>
+            <div class="flex flex-col items-center cursor-pointer group" onclick="showAlert('전입학 안내 서비스로 이동합니다.')">
+                <div class="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center text-xl group-hover:bg-orange-600 group-hover:text-white transition shadow-sm">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+                <span class="text-xs text-slate-700 mt-2 font-medium">전입학 안내</span>
+            </div>
+            <div class="flex flex-col items-center cursor-pointer group" onclick="showAlert('연수등록부 서비스로 이동합니다.')">
+                <div class="w-12 h-12 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center text-xl group-hover:bg-teal-600 group-hover:text-white transition shadow-sm">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <span class="text-xs text-slate-700 mt-2 font-medium">연수등록부</span>
+            </div>
+            <div class="flex flex-col items-center cursor-pointer group" onclick="showAlert('클릭날릭 날씨 서비스로 이동합니다.')">
+                <div class="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center text-xl group-hover:bg-sky-600 group-hover:text-white transition shadow-sm">
+                    <i class="fa-solid fa-cloud-sun"></i>
+                </div>
+                <span class="text-xs text-slate-700 mt-2 font-medium">클릭날릭</span>
+            </div>
+            <div class="flex flex-col items-center cursor-pointer group" onclick="showAlert('어울림톡 서비스로 이동합니다.')">
+                <div class="w-12 h-12 rounded-2xl bg-cyan-50 text-cyan-600 flex items-center justify-center text-xl group-hover:bg-cyan-600 group-hover:text-white transition shadow-sm">
+                    <i class="fa-solid fa-comments"></i>
+                </div>
+                <span class="text-xs text-slate-700 mt-2 font-medium">어울림톡</span>
+            </div>
+            <div class="flex flex-col items-center cursor-pointer group" onclick="showAlert('문자알리미 서비스로 이동합니다.')">
+                <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-500 flex items-center justify-center text-xl group-hover:bg-blue-500 group-hover:text-white transition shadow-sm">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <span class="text-xs text-slate-700 mt-2 font-medium">문자알리미</span>
+            </div>
+            <div class="flex flex-col items-center cursor-pointer group" onclick="showAlert('기상누리터 서비스로 이동합니다.')">
+                <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl group-hover:bg-purple-600 group-hover:text-white transition shadow-sm">
+                    <i class="fa-solid fa-wind"></i>
+                </div>
+                <span class="text-xs text-slate-700 mt-2 font-medium">기상누리터</span>
+            </div>
+            <div class="flex flex-col items-center cursor-pointer group" onclick="showAlert('초록발자국 생태교육으로 이동합니다.')">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl group-hover:bg-emerald-600 group-hover:text-white transition shadow-sm">
+                    <i class="fa-solid fa-shoe-prints"></i>
+                </div>
+                <span class="text-xs text-slate-700 mt-2 font-medium">초록발자국</span>
+            </div>
+            <div class="flex flex-col items-center cursor-pointer group" onclick="showAlert('마주온 협업 서비스로 이동합니다.')">
+                <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-500 flex items-center justify-center text-xl group-hover:bg-amber-500 group-hover:text-white transition shadow-sm">
+                    <i class="fa-solid fa-folder-open"></i>
+                </div>
+                <span class="text-xs text-slate-700 mt-2 font-medium">마주온 협업</span>
+            </div>
+            <div class="flex flex-col items-center cursor-pointer group" onclick="showAlert('Q&A 게시판으로 이동합니다.')">
+                <div class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-xl group-hover:bg-rose-600 group-hover:text-white transition shadow-sm">
+                    <i class="fa-solid fa-circle-question"></i>
+                </div>
+                <span class="text-xs text-slate-700 mt-2 font-medium">Q&A</span>
+            </div>
+            <div class="flex flex-col items-center cursor-pointer group" onclick="showAlert('마주온 톡 고객센터로 이동합니다.')">
+                <div class="w-12 h-12 rounded-2xl bg-sky-50 text-sky-500 flex items-center justify-center text-xl group-hover:bg-sky-500 group-hover:text-white transition shadow-sm">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <span class="text-xs text-slate-700 mt-2 font-medium">마주온 톡</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4분할 메인 섹션 컨테이너 -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-2">
+
+        <!-- 1. 소통톡 (파란색) -->
+        <section class="bg-[#1b5fd0] text-white rounded-3xl p-6 flex flex-col justify-between shadow-xl relative overflow-hidden group">
+            <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl"><i class="fa-solid fa-comments"></i></div>
+            <div>
+                <div class="flex items-center space-x-3 mb-5">
+                    <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-comment-dots"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold tracking-tight">소통톡</h2>
+                </div>
+
+                <div class="space-y-3">
+                    <div onclick="showAlert('충남톡(실시간 소통 서비스)로 연결됩니다.')" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-3.5 rounded-2xl cursor-pointer transition flex items-center space-x-3 border border-white/10">
+                        <i class="fa-solid fa-solid fa-comments text-lg"></i>
+                        <span class="font-medium text-sm">충남톡(실시간 소통 서비스)</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2.5 mt-3">
+                    <div onclick="showAlert('일정관리')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-regular fa-calendar text-base"></i>
+                        <span class="text-xs font-medium">일정관리</span>
+                    </div>
+                    <div onclick="showAlert('충남온자료실')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-box-archive text-base"></i>
+                        <span class="text-xs font-medium">충남온자료실</span>
+                    </div>
+                    <div onclick="showAlert('충남온메일')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-regular fa-envelope text-base"></i>
+                        <span class="text-xs font-medium">충남온메일</span>
+                    </div>
+                    <div onclick="showAlert('충남온설문')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-square-poll-horizontal text-base"></i>
+                        <span class="text-xs font-medium">충남온설문</span>
+                    </div>
+                    <div onclick="showAlert('유레카실문')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-file-lines text-base"></i>
+                        <span class="text-xs font-medium">유레카실문</span>
+                    </div>
+                    <div onclick="showAlert('클로바노트')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-microphone-lines text-base"></i>
+                        <span class="text-xs font-medium">클로바노트</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 pt-3 border-t border-white/10 text-xs text-blue-200">
+                교육 가족 간의 원활한 소통 공간
+            </div>
+        </section>
+
+        <!-- 2. 수업톡 (남색) -->
+        <section class="bg-[#10326e] text-white rounded-3xl p-6 flex flex-col justify-between shadow-xl relative overflow-hidden group">
+            <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl"><i class="fa-solid fa-book"></i></div>
+            <div>
+                <div class="flex items-center space-x-3 mb-5">
+                    <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-chalkboard"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold tracking-tight">수업톡</h2>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2.5">
+                    <div onclick="showAlert('충남온배움터')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-display text-base"></i>
+                        <span class="text-xs font-medium">충남온배움터</span>
+                    </div>
+                    <div onclick="showAlert('창의적체험활동자료')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-palette text-base"></i>
+                        <span class="text-xs font-medium">창의적체험 활동자료</span>
+                    </div>
+                    <div onclick="showAlert('계기교육자료')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-book-bookmark text-base"></i>
+                        <span class="text-xs font-medium">계기교육자료</span>
+                    </div>
+                    <div onclick="showAlert('교수학습자료')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-shapes text-base"></i>
+                        <span class="text-xs font-medium">교수학습자료</span>
+                    </div>
+                    <div onclick="showAlert('퀴즈엔')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-puzzle-piece text-base"></i>
+                        <span class="text-xs font-medium">퀴즈엔</span>
+                    </div>
+                    <div onclick="showAlert('아이글(AIGLE) AI서논술평가')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-brain text-base"></i>
+                        <span class="text-xs font-medium">아이글(AIGLE) AI서논술평가</span>
+                    </div>
+                    <div onclick="showAlert('미리캔버스 (Pro 자동연동)')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-pen-nib text-base"></i>
+                        <span class="text-xs font-medium">미리캔버스</span>
+                    </div>
+                    <div onclick="showAlert('클로바 더빙')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-volume-high text-base"></i>
+                        <span class="text-xs font-medium">클로바 더빙</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 pt-3 border-t border-white/10 text-xs text-blue-200">
+                수업 혁신을 위한 스마트 도구모음
+            </div>
+        </section>
+
+        <!-- 3. 미래톡 (주황색) -->
+        <section class="bg-[#d58913] text-white rounded-3xl p-6 flex flex-col justify-between shadow-xl relative overflow-hidden group">
+            <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl"><i class="fa-solid fa-lightbulb"></i></div>
+            <div>
+                <div class="flex items-center space-x-3 mb-5">
+                    <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold tracking-tight">미래톡</h2>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2.5">
+                    <div onclick="showAlert('인공지능(AI) 교육')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-robot text-base"></i>
+                        <span class="text-xs font-medium">인공지능(AI) 교육</span>
+                    </div>
+                    <div onclick="showAlert('소프트웨어(SW) 교육')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-laptop-code text-base"></i>
+                        <span class="text-xs font-medium">소프트웨어(SW) 교육</span>
+                    </div>
+                    <div onclick="showAlert('생태환경교육')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-seedling text-base"></i>
+                        <span class="text-xs font-medium">생태환경교육</span>
+                    </div>
+                    <div onclick="showAlert('상상이룸교육')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-lightbulb text-base"></i>
+                        <span class="text-xs font-medium">상상이룸교육</span>
+                    </div>
+                    <div onclick="showAlert('미래형 과학교육')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-atom text-base"></i>
+                        <span class="text-xs font-medium">미래형 과학교육</span>
+                    </div>
+                    <div onclick="showAlert('디지털 소양교육')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-tablet-screen-button text-base"></i>
+                        <span class="text-xs font-medium">디지털 소양교육</span>
+                    </div>
+                    <div onclick="showAlert('정보화기기 사용법')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-gear text-base"></i>
+                        <span class="text-xs font-medium">정보화기기 사용법</span>
+                    </div>
+                    <div onclick="showAlert('충남 전자등록부')" class="bg-white/10 hover:bg-white/20 p-3 rounded-xl cursor-pointer transition flex flex-col space-y-1.5 border border-white/10">
+                        <i class="fa-solid fa-address-book text-base"></i>
+                        <span class="text-xs font-medium">충남 전자등록부</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 pt-3 border-t border-white/10 text-xs text-orange-200">
+                창의융합 인재 양성을 위한 미래교육
+            </div>
+        </section>
+
+        <!-- 4. 행정톡 (분홍/자주색) -->
+        <section class="bg-[#c24b77] text-white rounded-3xl p-6 flex flex-col justify-between shadow-xl relative overflow-hidden group">
+            <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl"><i class="fa-solid fa-file-invoice"></i></div>
+            <div>
+                <div class="flex items-center space-x-3 mb-5">
+                    <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-building-user"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold tracking-tight">행정톡</h2>
+                </div>
+
+                <div class="space-y-2.5">
+                    <div onclick="showAlert('고수자료실: TOP10 우수자료, 계약·예산·표준서식 제공')" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-3 rounded-2xl cursor-pointer transition border border-white/10">
+                        <div class="flex items-center space-x-2 font-medium text-sm mb-0.5">
+                            <i class="fa-solid fa-folder-tree"></i>
+                            <span>고수자료실</span>
+                        </div>
+                        <p class="text-[11px] text-pink-100 leading-tight">TOP10 우수자료, 계약·예산·회계 표준서식</p>
+                    </div>
+
+                    <div onclick="showAlert('AI 행정비서: 공문 요약·작성, 민원 답변 생성')" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-3 rounded-2xl cursor-pointer transition border border-white/10">
+                        <div class="flex items-center space-x-2 font-medium text-sm mb-0.5">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span>AI 행정비서</span>
+                        </div>
+                        <p class="text-[11px] text-pink-100 leading-tight">공문 요약·작성, 민원 답변, 규정 Q&A</p>
+                    </div>
+
+                    <div onclick="showAlert('스마트 업무지원: 출장여비, 예산 계산기 등')" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-3 rounded-2xl cursor-pointer transition border border-white/10">
+                        <div class="flex items-center space-x-2 font-medium text-sm mb-0.5">
+                            <i class="fa-solid fa-calculator"></i>
+                            <span>스마트 업무지원</span>
+                        </div>
+                        <p class="text-[11px] text-pink-100 leading-tight">주간·월간 보고, 출장여비·예산 계산기</p>
+                    </div>
+
+                    <div onclick="showAlert('행정 소통·공유: 실무자 질의응답 및 가이드')" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-3 rounded-2xl cursor-pointer transition border border-white/10">
+                        <div class="flex items-center space-x-2 font-medium text-sm mb-0.5">
+                            <i class="fa-solid fa-users-rectangle"></i>
+                            <span>행정 소통·공유</span>
+                        </div>
+                        <p class="text-[11px] text-pink-100 leading-tight">행정실무 질의응답, 신규자 맞춤 가이드</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 pt-3 border-t border-white/10 text-xs text-pink-200">
+                업무 효율을 높이는 스마트 행정 지원
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 space-y-1">
+            <p class="font-semibold text-slate-700">충청남도교육청</p>
+            <p>우) 32588 충청남도 예산군 삽교읍 수암로 589 | 민원콜센터 041-123-4567</p>
+            <p class="text-slate-400 pt-1">Copyright © Chungnam Office of Education. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 모달 커스텀 알림창 -->
+    <div id="customModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-2xl p-6 max-w-sm w-full mx-4 shadow-2xl text-center">
+            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
+                <i class="fa-solid fa-circle-info"></i>
+            </div>
+            <p id="modalMessage" class="text-slate-800 font-medium text-sm mb-6"></p>
+            <button onclick="closeModal()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-xl transition shadow-md text-sm">
+                확인
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function showAlert(msg) {
+            document.getElementById('modalMessage').innerText = msg;
+            document.getElementById('customModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('customModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
